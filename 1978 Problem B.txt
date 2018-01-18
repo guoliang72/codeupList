@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <malloc.h>
+using namespace std;
+bool compare(int a,int b){
+	return a>b;
+}
+
+int main(){
+	int n;
+	int z[11][11];
+	while(scanf("%d",&n)!=EOF){
+	int result[22],hang[11]={0},lie[11]={0},mid1=0,mid2=0;
+	int i,j;
+	for (i=0;i<n;i++)
+	{
+		for (j=0;j<n;j++)
+		{
+			scanf("%d",&z[i][j]);
+		};
+	}
+
+	for (i=0;i<n;i++)
+	{
+		for (j=0;j<n;j++)
+		{
+			//printf("%d ",z[i][j]);
+			if(i==j){
+				mid1+=z[i][j];
+			}
+			if(i+j==n-1)mid2+=z[i][j];
+			hang[i] +=z[i][j];
+			lie[i]+=z[j][i];
+		}
+	}
+	for (i=0;i<n;i++)
+	{
+		result[i]=hang[i];
+	//	printf("%d ",result[i]);
+	}
+	for (j=0;j<n;j++)
+	{
+		result[j+i]=lie[j];
+	//	printf("%d ",result[i+j]);
+	}
+	result[2*n]=mid1;
+	result[2*n+1]=mid2;
+	sort(result,result+2*(n+1),compare);
+	for (i=0;i<2*(n+1);i++)
+	{
+		printf("%d",result[i]);
+		if(i!=2*n+1)printf(" ");
+	}
+	printf("\n");
+	}
+	return 0;
+}

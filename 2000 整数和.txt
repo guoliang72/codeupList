@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<math.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int m;
+	while (scanf("%d",&m)!=EOF)
+	{
+		int n;
+		while (m--)
+		{
+			scanf("%d",&n);
+			int sum=0;
+			if(n==0)printf("%d\n",sum);
+			else if(n>0){
+				int temp = 2*n;
+				sum = (temp-n+1)*(temp+n)/2;
+				printf("%d\n",sum);
+			}else{
+				int temp = 2*n;
+				sum = (n-temp+1)*(temp+n)/2;
+				printf("%d\n",sum);
+			}
+
+		}
+	}
+	
+	return 0;  
+}

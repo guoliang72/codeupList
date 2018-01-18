@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main()
+{
+	int n,i=0,j=0,m,a[101],b[101],flag=0,c[101];
+	while (scanf("%d",&n)!=EOF){
+	while(i<n){
+		scanf("%d",&a[i]);
+		i++;
+	}
+	scanf("%d",&m);
+	while (j<m)
+	{
+		scanf("%d",&b[j]);
+		j++;
+	}
+	//数组去重
+	int new_arr_len = 0;
+	int flags[101] = { 0 };//对每个元素做一个初始标记
+	for ( i = 0; i < n; i++)
+	{
+		if (flags[a[i]] == 0)
+		{
+			c[new_arr_len++] = a[i];
+			flags[a[i]] = 1;//出现过则标记属性设为1
+		}
+	}
+	for (j=0;j<m;j++)
+	{
+		for (i=0;i<new_arr_len;i++)
+		{
+			if(c[i]==b[j]){
+				printf("YES\n");
+				flag=1;
+			}
+		}
+		if(flag==0) printf("NO\n");
+		flag=0;
+	}
+	i=0;
+	j=0;
+	
+	}
+	return 0;
+}

@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<math.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int fir;
+	while(scanf("%d",&fir)!=EOF){
+		int a[2][3],b[3][2],c[2][2]={0},i,j,k;
+		a[0][0]=fir;
+		for (i=0;i<2;i++)
+		{
+			for (j=0;j<3;j++)
+			{
+				if(i==0&&j==0)continue;
+				scanf("%d",&a[i][j]);
+			}
+		}
+		for (i=0;i<3;i++)
+		{
+			for (j=0;j<2;j++)
+			{
+				scanf("%d",&b[i][j]);
+			}
+		}
+		for (i=0;i<2;i++)
+		{
+			for (j=0;j<2;j++)
+			{
+				for (k=0;k<3;k++)
+				{
+					c[i][j]+=a[i][k]*b[k][j];
+				}
+				printf("%d",c[i][j]);
+				if(j!=1)printf(" ");
+
+			}
+			printf("\n");
+		}
+	}
+	
+	
+	return 0;  
+}

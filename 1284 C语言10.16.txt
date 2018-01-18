@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+void swap(int &a,int &b){
+	int temp;
+	temp = a;
+	a = b;
+	b = temp;
+}
+int min(int a[]){
+	int i,minNum=a[0],mind=0;
+	for (i=0;i<10;i++)
+	{
+		if(a[i]<minNum){minNum = a[i];mind=i;}
+	}
+	return mind;
+}
+int max(int a[]){
+	int i=0,maxNum=a[0],maxd;
+	for (i=0;i<10;i++)
+	{
+		if(a[i]>maxNum){maxNum = a[i];maxd=i;}
+	}
+	return maxd;
+}
+int main()
+{
+	int a[10],i,mins,maxs;
+	for(i=0;i<10;i++){
+		scanf("%d",a+i);
+	}
+	mins = min(a);
+	maxs = max(a);
+	swap(a[0],a[mins]);
+	swap(a[9],a[maxs]);
+	for(i=0;i<10;i++){
+		printf("%d ",*(a+i));
+	}
+//	getchar();
+//	getchar();
+	return 0;
+}

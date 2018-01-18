@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	char str1[15],str2[15];
+	int i=0,j=0,len1,len2,count = 0,k=0;
+	long int result[100]={0},num1=0,num2=0;
+	while(scanf("%s %s",&str1,&str2)!=EOF){
+	//	puts(str1);
+	//	puts(str2);
+		len1 = strlen(str1)-1;
+		len2 = strlen(str2)-1;
+		
+		while(len1>=0){
+			if(str1[len1]>=48&&str1[len1]<=57){
+				num1+=(long int)(str1[len1]-48)*pow(10.0,i);
+				i++;
+				//printf("%d\n",num1);
+			}
+			if(str1[len1]=='-'){
+				num1 = -num1;
+			}
+			
+			len1--;
+		}
+		while(len2>=0){
+			if(str2[len2]>=48&&str2[len2]<=57){
+				num2+=(long int)(str2[len2]-48)*pow(10.0,j);
+				j++;
+			}
+			if(str2[len2]=='-'){
+				num2 = -num2;
+			}
+			
+			len2--;
+		}
+		result[count]=num1+num2;
+		num1=0;
+		num2=0;
+		count++;
+		i=0;j=0;
+	}
+	while (k<count)
+	{
+		printf("%d\n",result[k]);
+		k++;
+	}
+	return 0;
+}

@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <math.h>
+#include <iostream>
+using namespace std;
+bool compare(int a,int b){
+	return a>b;
+}
+int main(){
+	int n;
+	int a[10],ji[10],ou[10];
+	while(cin>>a[0]>>a[1]>>a[2]>>a[3]>>a[4]>>a[5]>>a[6]>>a[7]>>a[8]>>a[9]){
+		int i=0,j=0,k=0;
+		for (i;i<10;i++)
+		{
+			if (a[i]%2==0)
+			{
+				ou[j++]=a[i];
+			}else{
+				ji[k++]=a[i];
+			}
+		}
+		sort(ji,ji+k,compare);
+		sort(ou,ou+j);
+		for (i=0;i<k;i++)
+		{
+			printf("%d ",ji[i]);
+		}
+		for (i=0;i<j;i++)
+		{
+			printf("%d",ou[i]);
+			if(i!=j-1)printf(" ");
+		}
+		printf("\n");
+	}
+	return 0;
+}

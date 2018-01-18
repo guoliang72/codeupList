@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	char str1[10],str2[10];
+	int i=0,j=0,k=0,len1,len2,count = 0;;
+	int result[100]={0},sum=0;
+	while(scanf("%s%s",&str1,&str2)!=EOF){
+		len1 = strlen(str1)-1;
+		len2 = strlen(str2)-1;
+		for(i=0;i<=len1;i++){
+			for (j=0;j<=len2;j++)
+			{
+				sum += (int)(str1[i]-48)*(int)(str2[j]-48);
+			}
+		}
+		result[count]=sum;
+		count++;
+		sum=0;
+	}
+	while(k<count){
+		printf("%d\n",result[k]);
+		k++;
+	}
+	return 0;
+}

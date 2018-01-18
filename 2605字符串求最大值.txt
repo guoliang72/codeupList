@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char str1[20],str2[20],str3[20];
+	gets(str1);
+	gets(str2);
+	gets(str3);
+	int cmp = strcmp(str1,str2);
+	if(cmp > 0 ){
+		cmp = strcmp(str1,str3);
+		if(cmp > 0 )puts(str1);
+		else{
+			puts(str3);
+		}
+	}else{
+		cmp = strcmp(str2,str3);
+		if (cmp > 0)
+			puts(str2);
+		else{
+			puts(str3);
+		}
+		{
+		}
+	}
+	//getchar();
+	//getchar();
+	return 0;
+
+}

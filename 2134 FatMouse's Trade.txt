@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<algorithm>
+#include<math.h>
+using namespace std;
+struct trade{
+	int j;
+	int f;
+	double price;
+};
+bool comp(trade a,trade b){
+	return a.price<b.price;
+}
+int main()
+{
+	int M,N;
+	while (scanf("%d%d",&M,&N)!=EOF)
+	{
+		trade trades[1001];
+		if (M==-1&&N==-1)
+		{
+			return 0;
+		}
+		int i,j;
+		double sum=0;
+		for (i=0;i<N;i++)
+		{
+			scanf("%d%d",&trades[i].j,&trades[i].f);
+			trades[i].price = (double)trades[i].f/(double) trades[i].j;
+		}
+		sort(trades,trades+N,comp);
+		for (j=0;j<N;j++)
+		{
+			if(trades[j].f>=M){
+				sum += (double)M/(double)trades[j].f*(double)trades[j].j;
+				M=0;
+				break;
+			}else{
+				sum+=(double)trades[j].j;
+				M=M-trades[j].f;
+			}
+		}
+		printf("%.3lf\n",sum);
+	}
+	return 0;
+}

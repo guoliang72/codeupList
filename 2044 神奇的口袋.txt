@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+ 
+
+#define N 20
+
+#define SUM 40
+ 
+
+int sum;
+
+int count = 0;
+
+int a[N];
+ 
+
+int cmp(const void *a, const void *b)
+{
+    
+	return *(int *)a - *(int *)b;
+
+}
+ 
+
+void choose(int sum, int n)
+{
+    
+	if (sum == SUM)
+    {
+        
+	count ++;
+        
+	return ;
+    
+}
+    
+	if (n == 0)
+        
+	return ;
+    
+	if (sum + a[n-1] <= SUM)
+        
+	choose(sum + a[n-1], n-1);
+    
+	choose(sum , n-1);
+
+}
+ 
+
+int main(void)
+{
+    
+	int n, i;
+ 
+    
+	while (scanf("%d", &n) != EOF)
+    {
+        
+	for(i=0; i<n; i++)
+            
+	scanf("%d", &a[i]);
+        
+	qsort(a, n, sizeof(a[0]), cmp);
+        
+	count = 0;
+        
+	choose(0, n);
+        
+	printf("%d\n", count);
+    
+	}
+ 
+    
+r	eturn 0;
+
+}

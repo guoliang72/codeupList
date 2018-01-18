@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int sum;
+int count = 0,n;
+int a[21];
+ 
+void dfs(int cur, int sum)
+{
+	if (sum==40)
+	{
+		count++;
+		return;
+	}
+	if (sum>40)return;
+	if (cur == n+1)return;
+	dfs(cur+1,sum);
+	dfs(cur+1,sum+a[cur]);
+
+	
+}
+ 
+int main(void)
+{
+    int i;
+ 
+    while (scanf("%d", &n) != EOF)
+    {
+      for(i=1;i<=n;i++){
+		  scanf("%d",&a[i]);
+	  }
+	  count=0;
+	  dfs(1,0);
+	  printf("%d\n",count);
+    }
+ 
+    return 0;
+}

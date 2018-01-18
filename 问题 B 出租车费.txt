@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main()
+{
+	int n,a,b,sum1;
+	double sum;
+	while(scanf("%d",&n)&&n)
+	{
+		sum=0;
+		a=n/8;
+		b=n%8;
+		sum+=a*18;
+		if(b<5)
+		{
+			if(a!=0)
+				sum+=b*2.4;
+			else
+				sum+=10;
+		}
+		else
+		{
+			sum+=10+(b-4)*2;
+		}
+		sum1=(int)sum;
+		if(sum==sum1)
+			printf("%d\n",sum1);
+		else
+			printf("%.1lf\n",sum);
+	}
+}

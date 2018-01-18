@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<math.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int temp,i,g,s,b,q;
+	int a[10000];
+	for (i=1000;i<10000;i++)
+	{
+		q=i/1000;
+		b=i%1000/100;
+		s=i%100/10;
+		g=i%10;
+		temp = i*9;
+		if((temp/1000==g)&&(temp%1000/100==s)&&(temp%100/10==b)&&(temp%10==q))printf("%d\n",i);
+
+	}
+	return 0;
+}

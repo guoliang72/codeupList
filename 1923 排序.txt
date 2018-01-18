@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+using namespace std;
+bool compare(int a,int b){
+	return a<b;
+}
+int main(){
+	int n,a[100];
+	while (scanf("%d",&n)!=EOF)
+	{
+		int i;
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		sort(a,a+n);
+		for (i=0;i<n;i++)
+		{
+			printf("%d",a[i]);
+			if(i!=n-1)printf(" ");
+		}
+		printf("\n");
+	}
+	return 0;
+}

@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+using namespace std;
+int count,n,C[100],s[100][10];
+void search(int cur){
+	int i,j;
+	if (cur == 8) {//递归边界，只要走到这，所有的皇后必然不冲突
+		for (i=0;i<8;i++)
+		{
+			s[count][i]=C[i];
+		}
+		count++;
+	}else
+		for (i = 0;i < 8;i++)
+		{
+			int ok = 1;
+			C[cur] = i;//尝试把第cur行的皇后放在第i列
+			for (j = 0;j < cur;j++)//检查是否和前面的皇后冲突
+			//cur-C[cur] == j-C[j]||cur+C[cur] == j+C[j]用来判断皇后（cur,C[cur]）和（j,C[j]）是否在同一条对角线上
+			//C[cur] == C[j] 判断皇后是否在同一列
+		if (C[cur] == C[j] || cur-C[cur] == j-C[j]||cur+C[cur] == j+C[j])
+		{
+			ok = 0;
+			break;
+		}
+		if(ok)	
+			search(cur+1);
+	}
+	
+}
+int main(void)
+{
+	count = 0;  
+	int i,k,j;
+	search(0);
+	//printf("%d",count);
+	while (scanf("%d", &n) != EOF)  
+	{  
+		for(i=0; i<n; i++)  
+		{  
+			scanf("%d", &k);
+			for (j=0;j<8;j++)
+			{
+				printf("%d", s[k-1][j]+1);  
+			}
+			printf("\n");
+		}  
+	}  
+	return 0;
+}

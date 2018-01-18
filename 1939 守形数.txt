@@ -1,0 +1,27 @@
+#include<stdio.h>
+#include<math.h>
+#include <algorithm>
+using namespace std;
+int a[1000001];
+int main()
+{
+	int n;
+	while (scanf("%d",&n)!=EOF)
+	{
+		int temp,b,s;
+		temp = n*n;
+		b=temp/100;
+		s=temp/10;
+		if(b!=0){
+			if(n==temp-b*100)printf("Yes!\n");
+			else printf("No!\n");
+		}else if(s!=0){
+				if(n==temp-s*10)printf("Yes!\n");
+				else printf("No!\n");
+		}else{
+			printf("No!\n");
+		}
+		
+	}
+	return 0;
+}

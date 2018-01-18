@@ -1,0 +1,98 @@
+#include <iostream>
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+struct price
+{
+    double p;
+    int d;
+};
+int comp(const price a, const price b)
+{
+    return a.d<b.d;
+}
+int main()
+{
+    int Cmax,D,Davg,N;
+    while(cin>>Cmax>>D>>Davg>>N&&Cmax<=100&&D<=30000&&Davg<=20&&N<=500)
+    {
+        double dmax = Cmax*Davg;//最大可走距离 
+        struct price price[N];
+        for(int i=0;i<N;i++) cin>>price[i].p>>price[i].d;
+        sort(price,price+N,comp);//收费站按距离排序 
+        double alprice=0;//花钱数
+        double dis=0; //剩余油可行驶距离 
+        int i =0,next,flag;
+        if(N==0||price[0].d!=0)//起始点没有加油站时33
+        {
+            printf("%s %.2lf\n","The maximum travel distance =",0);
+            continue;
+        } 
+ 
+        while(i<N)
+        {
+            int j=1;
+            flag = 0;
+            if(i==N-1&&D-price[i].d>dmax)//开到最后一个加油站  到不了 
+            {
+                printf("%s %.2lf\n","The maximum travel distance =",price[N-1].d+dmax);
+                flag=4;
+                break;
+            }
+            else if(i==N-1) //开到最后一个加油站 能到 
+            {
+                alprice+=price[i].p*(D-price[i].d-dis);
+                break;
+            }
+ 
+            if(price[j+i].d-price[i].d>dmax)//到不了下一个加油站 
+            {
+                printf("%s %.2lf\n","The maximum travel distance =",price[i].d+dmax);
+                flag=4;
+                break;
+            }
+            double minprice = price[j+i].p;
+            while(price[j+i].d-price[i].d<=dmax&&j+i<N)
+            {
+                if(price[j+i].p<=price[i].p) //flag 1. 最大距离以内有更便宜的 
+                {
+                    alprice+=price[i].p*(price[j+i].d-price[i].d-dis);
+                    next=j;
+                    flag=1;
+                    dis=0;
+                    break;
+                }
+                else if(price[j+i].p<=minprice) //flag 2. 选择次便宜的加油站 
+                {
+                    minprice = price[j+i].p;next = j;flag=2;
+                }
+                   j++;
+            }
+            if(flag==2&&(D-price[i].d<dmax))  // 离终点不足最大距离且无更便宜的加油站时， 直接开到终点。
+            {
+                alprice+=price[i].p*(D-price[i].d-dis);
+                flag=3;
+                dis=0;
+                break;
+            }
+            else if(flag==2) //否则加满油，前往次便宜加油站
+            {
+                alprice += price[i].p*(dmax-dis);
+                dis = dmax-(price[next+i].d-price[i].d);
+            }
+         
+            i+=next;
+        }
+        if(flag!=4) printf("%.2lf\n",alprice/Davg);
+         
+    }
+    return 0;
+}
+ 
+/**************************************************************
+    Problem: 1437
+    Language: C++
+    Result: Accepted
+    Time:10 ms
+    Memory:1524 kb
+****************************************************************/

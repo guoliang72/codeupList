@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+struct student
+{
+	char num[4];
+	char name[8];
+	char sex[2];
+	int age;
+}stu[1000];
+int main()
+{
+	int n,i=0,j=0,m,flag=0;//标记没这个NUM
+	char nums[1000][4];
+	scanf("%d",&n);
+	while(i<n){
+		scanf("%s%s%s%d",&stu[i].num,&stu[i].name,&stu[i].sex,&stu[i].age);
+		i++;
+	}
+	scanf("%d",&m);
+	while(j<m){
+		scanf("%s",nums[j]);
+		j++;
+	}
+	for (j=0;j<m;j++)
+	{
+		for (i=0;i<n;i++)
+		{
+			if(strcmp(stu[i].num,nums[j])==0){
+				printf("%s %s %s %d\n",stu[i].num,stu[i].name,stu[i].sex,stu[i].age);
+				flag=1;
+			}
+		}
+		if(flag==0){
+			printf("No Answer!\n");
+		}
+		flag=0;
+	}
+	return 0;
+}

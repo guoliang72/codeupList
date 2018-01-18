@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main()
+{
+	int n,i=0,j=0,a[200]={0},temp,flag=0;
+	while (scanf("%d",&n)!=EOF)
+	{
+		while(i<n){
+			scanf("%d",&a[i]);
+			i++;
+		}
+		scanf("%d",&temp);
+		for(j=0;j<n;j++){
+			if(a[j]==temp){printf("%d\n",j);flag=1;}
+		}
+		if (flag==0)
+		{
+			printf("-1\n");
+		}
+		i=0;
+		flag=0;
+	}
+	
+	return 0;
+}

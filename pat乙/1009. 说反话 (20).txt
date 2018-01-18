@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include <string.h>
+
+int main(){
+	char a[80];
+	int n,i,j=0,flag=0;
+	gets(a);
+	int alen = strlen(a),r=0,h=0;
+	char ans[90][90];
+	for (int i = 0;i < alen;i++)
+	{
+		if(a[i] != ' '){
+			ans[r][h++] = a[i];
+		}else{
+			ans[r][h] = '\0';
+			r++;
+			h = 0;
+		}
+	}
+	for (int i = r;i>=0;i--)
+	{
+		printf("%s",ans[i]);
+		if (i > 0)
+		{
+			printf(" ");
+		}
+	}
+	return 0;
+}

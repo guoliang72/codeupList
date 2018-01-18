@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main()
+{
+	int N,scores[1000],i=0,temp,count=0;
+	while (scanf("%d",&N))
+	{
+		if(N==0)break;
+		while(i<N){
+			scanf("%d",&scores[i]);
+				i++;
+		}
+		scanf("%d",&temp);
+		for(i=0;i<N;i++){
+			if(temp == scores[i]){
+				count++;
+			}
+		}
+		printf("%d\n",count);
+		count=0;
+		i=0;
+	}
+	
+	return 0;
+}

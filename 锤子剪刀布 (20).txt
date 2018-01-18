@@ -1,0 +1,56 @@
+#include <stdio.h>
+int main()
+{
+	int N;
+	char chushou[3]={'C','J','B'};
+	char jia,yi;
+	int resulta[3]={0},resultb[3]={0},rsa[3]={0},rsb[3]={0},k=0,maxnum=-1;
+	scanf("%d",&N);
+	while(N--){
+		getchar();
+		scanf("%c %c",&jia,&yi);
+		//printf("%c %c\n",jia,yi);
+		if(jia == 'C'&&yi == 'C'){resulta[1]++;resultb[1]++;}
+		if(jia == 'C'&&yi == 'J'){resulta[0]++;resultb[2]++;rsa[0]++;}
+		if(jia == 'C'&&yi == 'B'){resulta[2]++;resultb[0]++;rsb[2]++;}
+		if(jia == 'J'&&yi == 'J'){resulta[1]++;resultb[1]++;}
+		if(jia == 'J'&&yi == 'C'){resulta[2]++;resultb[0]++;rsb[0]++;}
+		if(jia == 'J'&&yi == 'B'){resulta[0]++;resultb[2]++;rsa[1]++;}
+		if(jia == 'B'&&yi == 'B'){resulta[1]++;resultb[1]++;}
+		if(jia == 'B'&&yi == 'C'){resulta[0]++;resultb[2]++;rsa[2]++;}
+		if(jia == 'B'&&yi == 'J'){resulta[2]++;resultb[0]++;rsb[1]++;}
+	}
+	printf("%d %d %d\n",resulta[0],resulta[1],resulta[2]);
+	printf("%d %d %d\n",resultb[0],resultb[1],resultb[2]);
+	
+	for(int i = 0;i<3;i++){
+		if(rsa[i]>maxnum){
+			maxnum = rsa[i];
+			k=i;
+		}
+		if(rsa[i]==maxnum){
+			if(chushou[i]-chushou[k]<=0){
+			maxnum = rsa[i];
+			k=i;
+			}
+		}
+	}
+	printf("%c ",chushou[k]);
+	k=0;
+	maxnum=-1;
+	for(int i = 0;i<3;i++){
+		if(rsb[i]>maxnum){
+				maxnum = rsb[i];
+				k=i;
+		}
+		if(rsb[i]==maxnum){
+			if(chushou[i]-chushou[k]<=0){
+			maxnum = rsb[i];
+			k=i;
+			}
+		}
+	}
+	printf("%c\n",chushou[k]);
+	
+	return 0;
+}

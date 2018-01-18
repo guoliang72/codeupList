@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+	long long a,b;
+	int pa,pb,tempa,tempb,resulta=0,resultb=0,j=0,k=0;
+	scanf("%lld%d%lld%d",&a,&pa,&b,&pb);
+	for(int i=10;i>=0;i--)
+	{
+		tempa = a / (long int)pow(10.0,i);
+		a = a % (long int)pow(10.0,i);
+		tempb = b / (long int)pow(10.0,i);
+		b = b % (long int)pow(10.0,i);
+		if(tempa!=0&&tempa == pa){
+			resulta += pa*(long int)pow(10.0,j);
+			j++;
+		}
+		if(tempb!=0&&tempb == pb){
+			resultb += pb*(long int)pow(10.0,k);
+			k++;
+		}
+		
+	}
+	printf("%d\n",resulta+resultb);
+	return 0;
+}

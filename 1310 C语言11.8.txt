@@ -1,0 +1,45 @@
+#include <stdio.h>
+#define N 10
+struct student
+{ char num[6];
+char name[8];
+int score[3];
+float avr;
+} stu[N];
+
+int main()
+{ int i,j,maxi;
+float sum,max,average[N]={0,0,0,0,0,0,0,0,0,0};
+for (i=0;i<N;i++)
+{
+scanf("%s%s%d%d%d",&stu[i].num,&stu[i].name,&stu[i].score[0],&stu[i].score[1],&stu[i].score[2]);
+
+}
+max=0;
+maxi=0;
+for (i=0;i<N;i++)
+{
+	sum=0;
+for (j=0;j<3;j++)
+	sum+=(float)stu[i].score[j];
+//stu[i].avr=sum/3.0;
+if (sum>max)
+{
+	max=sum;
+	maxi=i;
+}
+}
+for (j=0;j<3;j++){
+	for (i=0;i<N;i++)
+	{
+		average[j]+=stu[i].score[j];
+	}
+
+}
+for(i=0;i<3;i++){
+printf("%.2f ",average[i]/10);
+}
+printf("\n");
+printf("%s %s %d %d %d\n",stu[maxi].num,stu[maxi].name,stu[maxi].score[0],stu[maxi].score[1],stu[maxi].score[2]);
+return 0;
+}

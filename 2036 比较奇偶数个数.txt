@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	int n,a[1000]={0},num,i=0,j=0,k=0,ji=0,ou=0;
+	while (scanf("%d",&n)!=EOF)
+	{
+		for(i=0;i<n;i++){
+			scanf("%d",&num);
+			if(num%2==0)ou++;
+			else ji++;
+		}
+		if(ou>ji)a[j]=1;
+		j++;
+	}
+	while(k<j){
+		if(a[k]==1)printf("NO\n");
+		else printf("YES\n");
+		k++;
+	}
+	return 0;
+}

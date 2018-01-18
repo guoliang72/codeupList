@@ -1,0 +1,35 @@
+#include<stdio.h>
+#include<algorithm>
+#include<math.h>
+using namespace std;
+bool cmp(int a,int b){
+	return a<b;
+}
+int main()
+{
+	int m,n,v,w,PI[101]={0};
+	while(scanf("%d",&m)!=EOF){
+		while(m--){
+			int i,j,flag=0,counts=0,sum=0;
+			scanf("%d%d%d",&n,&v,&w);
+			for (i=0;i<n;i++)
+			{
+				scanf("%d",&PI[i]);
+			}
+			sort(PI,PI+n,cmp);
+			for (i=0;i<n;i++)
+			{
+				if ((sum + PI[i]) > (counts + 1) * w) {  
+					break;  
+				}  
+				sum += PI[i];  
+				counts++;  
+
+			}
+			if(counts==0)printf("0 0.00\n");
+			else
+				printf("%d %.2f\n",counts*v,sum*1.0/(counts*100));
+		}
+	}
+	return 0;
+}

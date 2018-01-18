@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+	int n,a[10]={0},i=0,j=1;
+	long long num1,num2,num3;
+	scanf("%d",&n);
+		for(i=0;i<n;i++){
+			scanf("%lld%lld%lld",&num1,&num2,&num3);
+			if(num1+num2>num3) printf("Case #%d: true\n",j++);
+			else printf("Case #%d: false\n",j++);
+		}
+
+	return 0;
+}

@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <string.h>
+struct student {
+	int num;
+	char name[20];
+	char sex;
+	int age;
+};
+int main()
+{
+	int n,i=0,j=0;
+	student stu[20];
+	scanf("%d",&n);
+	
+	if(n<100){
+		while(i<n){
+		scanf("%d %s %c %d",&stu[i].num,&stu[i].name,&stu[i].sex,&stu[i].age);
+		i++;
+		}
+	}
+	
+	while(j<n){
+		printf("%d %s %c %d\n",stu[j].num,stu[j].name,stu[j].sex,stu[j].age);
+		j++;
+	}
+	//getchar();
+	//getchar();
+	return 0;
+}

@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int main()
+{
+	int h,i=0,j=0,n,h1;
+	while(scanf("%d",&h)!=EOF){
+	h1=h;
+	n=h1+(h-1)*2;
+	for (i=0;i<h;i++)
+	{
+		for (j=0;j<n;j++)
+		{
+			if(j<n-h1){
+				printf(" ");
+			}else{
+				printf("*");
+			}
+		}
+		h1+=2;
+		printf("\n");
+	}
+	h1=0;
+	}
+	return 0;
+}

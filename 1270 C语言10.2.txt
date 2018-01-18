@@ -1,0 +1,37 @@
+#include <stdio.h> 
+
+int main() 
+{ 
+	int *a,*b,*c;
+	int i,j,k;
+	scanf("%d%d%d",&i,&j,&k);
+	a=&i;
+	b=&j;
+	c=&k;
+	if(*a>*b){
+		if(*a>*c){
+			if(*b>*c){
+				printf("%d %d %d\n",*a,*b,*c);
+			}else{
+				printf("%d %d %d\n",*a,*c,*b);
+			}
+		}
+		else{//a<c,a>b
+			printf("%d %d %d\n",*c,*a,*b);
+		}
+	}else{//a<b
+		if(*a<*c){//a<b a<c
+			if(*b<*c){
+				printf("%d %d %d\n",*c,*b,*a);
+			}else{
+				printf("%d %d %d\n",*b,*c,*a);
+			}
+		}else{//a<b a>c
+			printf("%d %d %d\n",*b,*a,*c);
+		}
+		
+	}
+	//getchar();
+	//getchar();
+	return 0;
+}

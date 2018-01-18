@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <malloc.h>
+using namespace std;
+bool compare(char a,char b){
+		return a-b<0;
+}
+
+int main(){
+	int n;
+	char str[201];
+	while (gets(str))
+	{
+		
+		int len = strlen(str);
+		sort(str,str+len,compare);
+		printf("%s\n",str);
+	}
+	return 0;
+}

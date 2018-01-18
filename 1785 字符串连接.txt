@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include <string.h>
+int main(){
+	char a[100],b[100];
+	while(scanf("%s%s",a,b)!=EOF){
+		int i=0,j=0,k=0;
+		while(a[i]!='\0'){
+			i++;
+		}
+		while(b[j]!='\0'){
+			j++;
+		}
+		for (k=0;k<j;k++)
+		{
+			a[i+k]=b[k];
+		}
+		k=0;
+		while(k<i+j){
+			printf("%c",a[k]);
+			k++;
+		}
+		printf("\n");
+	}
+	return 0;
+}

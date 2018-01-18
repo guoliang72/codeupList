@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include <string.h>
+int isLeapYear(int year);
+
+int dayofMonth[13][2] = {{0,0}, {31,31}, {28,29}, {31,31}, {30,30}, {31,31}, {30,30}, {31,31}, {31,31}, {30,30}, {31,31}, {30,30}, {31,31} }; 
+struct Date 
+{
+	int Day;
+	int Month;
+	int Year;
+	void nextDay(){
+		Day++;
+		if(Day > dayofMonth[Month][isLeapYear(Year)]){
+			Day = 1;
+			Month++;
+			if(Month>12){
+				Month = 1;
+				Year++;
+			}
+		}
+	}
+};
+int buf[3001][13][32];
+char monthName[13][20]={
+	"","January","February","March","April","May","June","July","August","September","October","November","December"
+};
+char weekName[7][20] = {
+	"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
+};
+
+int main(){
+	Date tmp;
+	int cnt = 1;
+	tmp.Day = 1;
+	tmp.Month = 1;
+	tmp.Year = 0;
+	int cz=0;
+	while(scanf("%d%d",&tmp.Year,&cz)!=EOF){
+		//buf[tmp.Year][tmp.Month][tmp.Day] = cnt;
+		while(cnt<cz){
+		tmp.nextDay();
+		cnt++;
+		}
+		cnt=1;
+		printf("%04d-%02d-%02d\n",tmp.Year,tmp.Month,tmp.Day);
+		tmp.Day = 1;
+		tmp.Month = 1;
+}
+	return 0;
+}
+
+int isLeapYear(int year){
+	return (((year%4 == 0 && year%100 != 0)  ||  (year % 400 == 0))?1:0);
+}

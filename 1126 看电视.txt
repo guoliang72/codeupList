@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <algorithm>
+using namespace std;
+struct TVshow{
+	int start;
+	int end;
+}shows[110];
+bool cmp(TVshow a ,TVshow b){
+	return a.end<b.end;
+}
+/*
+分析：首先进行结构体排序，这道题的关键就在于结构体排序时所选用的排列方法，
+如果以电视节目的开始时间排序的话，那么可能出现电视节目放的早结束的晚这种情况，
+这显然不是最优解，所以我们对电视节目的结束时间进行排序，这样向下遍历，因为是按结束顺序排列的，
+向下遍历的时候只会提前到达目标位置。这样的结果就是最优的解。
+*/
+int main(void)
+{
+	int n;
+	while (scanf("%d",&n)!=EOF)
+	{
+		if (n==0)break;
+		int i,j,k=0,s[110]={0},counts=1;
+		for (i=0;i<n;i++)
+		{
+			scanf("%d%d",&shows[i].start,&shows[i].end);
+		}
+		sort(shows,shows+n,cmp);
+		k = shows[0].end;
+		for(int i=0;i<n;i++)  
+		{  
+			if(shows[i].start>=k)//开始时间大于结束时间  
+			{  
+				counts++;  
+				k=shows[i].end;  
+			}  
+		}  
+		printf("%d\n",counts);
+		}
+	
+	return 0;
+}

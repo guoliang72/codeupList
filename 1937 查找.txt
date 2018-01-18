@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<math.h>
+using namespace std;
+int binarySearch(int A[],int left,int right,int x){
+	int mid;
+	while (left<=right)
+	{
+		mid = (left+right)/2;
+		if(A[mid] == x) return mid;
+		else if(A[mid]>x){
+			right = mid-1;
+		}else{
+			left = mid+1;
+		}
+	}
+	return -1;
+}
+int main()
+{
+	int n;
+	while (scanf("%d",&n)!=EOF)
+	{
+		int i,m,j;
+		int a[101],b[101];
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		scanf("%d",&m);
+		for (i=0;i<m;i++)
+		{
+			scanf("%d",&b[i]);
+		}
+		for (i=0;i<m;i++)
+		{
+			int index = -1;
+			for (j=0;j<n;j++)
+			{
+				 if (b[i] ==a[j]) { index = j; break; }
+			}
+			if(index!=-1)
+				printf("YES\n");
+			else printf("NO\n");
+		
+		}
+	}
+	return 0;
+}

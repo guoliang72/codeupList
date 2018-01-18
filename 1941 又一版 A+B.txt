@@ -1,0 +1,26 @@
+#include<stdio.h>
+#include <string.h>
+
+int main(){
+	long int a ,b;
+	int d;
+	while(scanf("%d",&d)||d==0){
+		if (d==0)
+		{
+			break;
+		}
+	scanf("%ld%ld",&a,&b);
+	int ans[31];
+	int num=0;
+	long int sum = a+b;
+	do{
+		ans[num++] = sum%d;
+		sum /= d;
+	}while(sum != 0);
+	for(int i = num - 1;i>=0;i--){
+		printf("%d",ans[i]);
+	}
+	printf("\n");
+	}
+	return 0;
+}

@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+struct Students
+{
+	char num[21];
+	int count;
+	int solution[10];
+	int result;
+};
+bool compare(Students a,Students b){
+	if(a.result!=b.result)
+		return a.result>b.result;
+	else
+		return strcmp(a.num,b.num)<0;
+	
+}
+int main(){
+	int n,m,g;
+	int prob[10];
+	Students stu[1000];
+	while(scanf("%d%d%d",&n,&m,&g)!=EOF){
+		if(n==0)break;
+		int i,j,k=0,temp;
+		for (i=0;i<m;i++)
+		{
+			scanf("%d",&prob[i]);
+		}
+		for (i=0;i<n;i++)
+		{
+			scanf("%s%d",&stu[i].num,&stu[i].count);
+			temp = 0;
+			for (j=0;j<stu[i].count;j++)
+			{
+				scanf("%d",&stu[i].solution[j]);
+				temp += prob[stu[i].solution[j]-1];
+			}
+			if (temp >= g)k++;
+			stu[i].result = temp;
+		}
+		printf("%d\n",k);
+		sort(stu,stu+n,compare);
+		for (i=0;i<k;i++)
+		{
+			printf("%s %d\n",stu[i].num,stu[i].result);
+		}
+	}
+	
+	return 0;
+}

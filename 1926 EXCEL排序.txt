@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <stdlib.h>
+#include <malloc.h>
+using namespace std;
+
+struct Student
+{
+	char nums[10];
+	//int numshu;
+	char name[10];
+	int score;
+}stu[100001];//作为全局变量，从堆里申请内存
+bool compare1(Student a,Student b){
+	return strcmp(a.nums,b.nums)<0;
+}
+bool compare2(Student a,Student b){
+	if(strcmp(a.name,b.name)!=0)
+		return strcmp(a.name,b.name)<0;
+	else 
+		return strcmp(a.nums,b.nums)<0;
+}
+bool compare3(Student a,Student b){
+	if(a.score != b.score)
+	return a.score<b.score;
+	else 
+		return strcmp(a.nums,b.nums)<0;
+}
+int main(){
+	int n;
+	int c;
+	int count=1;
+	while (scanf("%d%d",&n,&c)!=EOF)
+	{
+		if(n==0)break;
+		//动态分配
+		//struct Student *stu;
+		//stu = (struct Student *)malloc(n*sizeof(struct Student));
+		//if (NULL==stu) {
+		//	printf("Can not malloc %d stu!\n",n);
+		//	return 1;
+		//};
+		int i,len=n;
+		for (i=0;i<len;i++)
+		{
+			scanf("%s %s %d",&stu[i].nums,&stu[i].name,&stu[i].score);
+			//printf("%s%s%d\n",stu[i].nums,stu[i].name,stu[i].score);
+			//sscanf(stu[i].nums,"%ld",&stu[i].numshu);
+
+		}
+		if(c==1){
+			sort(stu,stu+len,compare1);
+			printf("Case %d:\n",count);
+			for (i=0;i<len;i++)
+			{
+				printf("%s %s %d",stu[i].nums,stu[i].name,stu[i].score);
+				printf("\n");
+			}
+		}
+		if(c==2){
+			sort(stu,stu+len,compare2);
+			printf("Case %d:\n",count);
+			for (i=0;i<len;i++)
+			{
+				printf("%s %s %d",stu[i].nums,stu[i].name,stu[i].score);
+				printf("\n");
+			}
+		}
+		if(c==3){
+			sort(stu,stu+len,compare3);
+			printf("Case %d:\n",count);
+			for (i=0;i<len;i++)
+			{
+				printf("%s %s %d",stu[i].nums,stu[i].name,stu[i].score);
+				printf("\n");
+			}
+		}
+		count++;
+	//	free(stu);
+	}
+	return 0;
+}

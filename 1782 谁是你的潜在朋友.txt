@@ -1,0 +1,34 @@
+#include<stdio.h>
+#include <string.h>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+
+int main(){
+	int n,m;
+	while(scanf("%d%d",&n,&m)!=EOF){
+		int i,j,num,a[200]={0},count[201]={0};
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&num);
+			a[i]=num;
+		}
+		for (i=0;i<n;i++)
+		{
+			for (j=i+1;j<n;j++)
+			{
+				if(a[i]==a[j]){
+					count[i]++;
+					count[j]++;
+				}
+			}
+		}
+		for (i=0;i<n;i++)
+		{
+			if(count[i]!=0)printf("%d\n",count[i]);
+			else printf("BeiJu\n");
+		}
+	}
+
+	return 0;
+}

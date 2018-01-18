@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<math.h>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	int n;
+	while(scanf("%d",&n)!=EOF){
+		int i,j,temp,max=-1,indexs=-1,a[11]={0};
+		a[n]++;
+		for (i=1;i<20;i++)
+		{
+			scanf("%d",&temp);
+			a[temp]++;
+		}
+		for(j=1;j<11;j++)
+		{
+			if(a[j]>=max){
+				if (a[j]==max&&indexs<j)
+				{
+					continue;
+				}
+				max=a[j];
+				indexs=j;
+			}
+		}
+		printf("%d\n",indexs);
+	}
+	return 0;  
+}

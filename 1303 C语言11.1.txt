@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+struct person {
+	char name[20];
+	int count;
+}leader[3] = {{"Li",0},{"Zhang",0},{"Fun", 0}};
+int main()
+{
+	int n,i=0;
+	char str[10];
+	scanf("%d",&n);
+	if(n<100){
+		while(i<=n){
+		gets(str);
+		if(strcmp(str,"Li")==0)leader[0].count++;
+		if(strcmp(str,"Zhang")==0)leader[1].count++;
+		if(strcmp(str,"Fun")==0)leader[2].count++;
+		i++;
+		}
+	}
+	printf("Li:%d\n",leader[0].count);
+	printf("Zhang:%d\n",leader[1].count);
+	printf("Fun:%d\n",leader[2].count);
+	//getchar();
+	//getchar();
+	return 0;
+}

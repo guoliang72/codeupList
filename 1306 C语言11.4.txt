@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+struct persons{
+	int num;
+	char name[10];
+	char sex;
+	char job;
+	union {
+		int Class;
+		char position[10];
+	}category;
+};
+int main()
+{
+	int n,i=0,j=0;
+	persons person[100];
+	scanf("%d",&n);
+	
+	if(n<100){
+		while(i<n){
+			scanf("%d %s %c %c", &person[i].num, &person[i].name,
+				&person[i].sex, &person[i].job);
+			if(person[i].job == 's')
+				scanf("%d", &person[i].category.Class);
+			else if(person[i].job == 't')
+				scanf("%s", person[i].category.position);
+		i++;
+		}
+	}
+	
+	while(j<n){
+		if (person[j].job == 's'){
+			printf("%d %s %c %c %d\n",person[j].num, person[j].name,
+			person[j].sex, person[j].job, person[j].category.Class);
+		}else{
+			printf("%d %s %c %c %s\n",person[j].num, person[j].name,
+			person[j].sex, person[j].job, person[j].category.position);
+	}
+		j++;
+	}
+	//getchar();
+	//getchar();
+	return 0;
+}

@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include <string.h>
+#include <math.h>
+char symbols[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+int main(){	
+	int a;
+	int b;
+	char input[64];
+	long int n;
+	while(scanf("%d",&a)!=EOF){
+	if(a>10){
+		scanf("%s%d",input,&b);
+	}else{
+		scanf("%d%d",&n,&b);
+	}
+	int ans[64];
+	int num=0,i=0,k=strlen(input)-1;
+	long int y = 0,product = 1;
+	//a进制转化成十进制
+	if(a>10){
+	while(i<strlen(input)){
+		switch (input[i])
+		{
+		case '1':y+=1*pow((double)a,k--);
+			i++;
+		//	printf("a=%d,y=%d\n",a,y);
+			break;
+		case '2':y+=2*pow((double)a,k--);
+			i++;
+		//	printf("a=%d,y=%d\n",a,y);
+			break;
+		case '3':y+=3*pow((double)a,k--);
+			i++;
+		//	printf("a=%d,y=%d\n",a,y);
+			break;
+		case '4':y+=4*pow((double)a,k--);
+			i++;
+			break;
+		case '5':y+=5*pow((double)a,k--);
+			i++;
+			break;
+		case '6':y+=6*pow((double)a,k--);
+			i++;
+			break;
+		case '7':y+=7*pow((double)a,k--);
+			i++;
+			break;
+		case '8':y+=8*pow((double)a,k--);
+			i++;
+			break;
+		case '9':y+=9*pow((double)a,k--);
+			i++;
+			break;
+		case '0':y+=0*pow((double)a,k--);
+			i++;
+			break;
+		case 'a':y+=10*pow((double)a,k--);
+			i++;
+			break;
+		case 'b':y+=11*pow((double)a,k--);
+			i++;
+			break;
+		case 'c':y+=12*pow((double)a,k--);
+			i++;
+			break;
+		case 'd':y+=13*pow((double)a,k--);
+			i++;
+			break;
+		case 'e':y+=14*pow((double)a,k--);
+			i++;
+			break;
+		case 'f':y+=15*pow((double)a,k--);
+			i++;
+			break;
+		default:
+			break;
+		}
+		
+	}
+	}else if(a<10){
+	while(n!=0){
+	y = y+(n%10)*product;
+	n = n/10;
+	product = product * a;
+	}
+	}
+	//十进制转化成b进制
+	if(b!=10){
+	do{
+		ans[num++] = y%b;
+		y /= b;
+	}while(y != 0);
+	}
+	if(b!=10){
+	for(int i = num - 1;i>=0;i--){
+		printf("%c",symbols[ans[i]]);
+	}
+	}else if(a==10&&b==10){
+		printf("%d",n);
+	}else{
+		printf("%d",y);
+	}
+	printf("\n");
+	}
+	return 0;
+}
